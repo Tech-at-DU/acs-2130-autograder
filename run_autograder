@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
 
-# Set up autograder files
+$DIRECTORY = ""
 
-cp /autograder/submission/calculator.py /autograder/source/calculator.py
+# Update autograder files
+git pull origin master
 
+# Figure out which directory students put the code in:
+if [ -d "/autograder/submission/Code" ]; then
+    echo "Code directory exists."
+    DIRECTORY = "Code/"
+else
+    echo "Code directory does not exist."
+    if [ -d "/autograder/submission/source" ]; then
+        DIRECTORY = "source/"
+    fi
+fi
+
+# Copy submission code to source directory:
+cp -a /autograder/submission/$DIRECTORY. /autograder/source
 cd /autograder/source
 
-python3 run_tests.py
+# Run tests and output results in JSON:
+python3 run_tests.py >/autograder/results/results.json
