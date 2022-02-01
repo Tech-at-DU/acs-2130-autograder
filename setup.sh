@@ -16,11 +16,5 @@ ssh-keyscan -t rsa github.com >>~/.ssh/known_hosts
 # Clone autograder repository from GitHub:
 git clone git@github.com:droxey/tweet-generator-autograder /autograder/src
 
-# Copy the latest tests to the /autograder/tests directory:
-wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/Tech-at-DU/ACS-1120-Intro-Data-Structures/master/Code/dictogram_test.py /autograder/src/tests/dictogram_test.py
-wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/Tech-at-DU/ACS-1120-Intro-Data-Structures/master/Code/listogram_test.py /autograder/src/tests/listogram_test.py
-wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/Tech-at-DU/ACS-1120-Intro-Data-Structures/master/Code/hashtable_test.py /autograder/src/tests/hashtable_test.py
-wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/Tech-at-DU/ACS-1120-Intro-Data-Structures/master/Code/linkedlist_test.py /autograder/src/tests/linkedlist_test.py
-
 # Install the requirements from this repository:
 pip3 install -r /autograder/src/requirements.txt
