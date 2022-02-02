@@ -9,10 +9,10 @@ DIRECTORY="/autograder/submission"
 echo "Copying code to /autograder/source"
 cp -v -R "$DIRECTORY/." /autograder/source
 
+# Install the submission's dependencies:
+pip3 install --user subprocess32 gradescope-utils flask gunicorn
+pip3 install --user -r /autograder/source/requirements.txt
+
 # Run tests and output results in JSON:
 echo "Running autograder..."
 python3 /autograder/source/run_tests.py
-
-# If you are debugging, the output will be found in
-# the $SUBMISSION_DIR/results directory defned in debug.sh:
-cp -r /autograder/results /autograder/submission/results

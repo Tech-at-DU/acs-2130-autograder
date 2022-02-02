@@ -14,8 +14,7 @@ RUN mkdir -p /autograder/source && \
     mkdir -p /root/.ssh
 
 # Install dependencies:
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 python3-pip python3-dev && \
+RUN apt-get install -y --no-install-recommends python3 python3-pip python3-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add deploy key so we can use GitHub in here if we need to.
@@ -25,8 +24,8 @@ COPY deploy_key /root/.ssh/deploy_key
 RUN ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
 
 # Add only the requirements to the base image, then install them:
-COPY requirements.txt /autograder/source/requirements.txt
-RUN pip3 install --user -r /autograder/source/requirements.txt
+COPY requirements.txt /autograder/source/requirements_autograder.txt
+RUN pip3 install --user -r /autograder/source/requirements_autograder.txt
 
 # Add code files (and anything else that requires a build) to the second layer:
 FROM ${BASE_REPO}:${TAG} as AUTOGRADER_FILES

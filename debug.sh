@@ -8,7 +8,7 @@ IMAGE_NAME="autograder-tweet-generator:latest"
 START_SCRIPT="bash -c /autograder/source/run_autograder && cat /autograder/results/results.json"
 
 docker run --rm -v $SUBMISSION_DIR:/autograder/submission $IMAGE_NAME $START_SCRIPT
-cat $SUBMISSION_DIR/results.json
+code $SUBMISSION_DIR/results/results.json
 
 # Uncomment to test the autograder in interactive mode:
 # docker run --rm -it -v $SUBMISSION_DIR:/autograder/submission $IMAGE_NAME bash
