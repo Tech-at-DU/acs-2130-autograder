@@ -7,7 +7,7 @@ ARG TAG=latest
 FROM ${BASE_REPO}:${TAG}
 
 # Create directory structure:
-RUN mkdir -p /autograder/source
+RUN mkdir -p /autograder/source && mkdir /autograder/results
 
 # Copy codebase:
 ADD . /autograder/source
@@ -16,10 +16,6 @@ ADD . /autograder/source
 RUN apt-get update && \
     apt-get install -y python3 python3-pip python3-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Ensure that scripts are Unix-friendly and executable:
-# RUN dos2unix /autograder/run_autograder /autograder/source/setup.sh && \
-    # chmod +x /autograder/run_autograder
 
 # Create .ssh directory and copy config files.
 # ssh-keyscan prevent host key verification errors at runtime:

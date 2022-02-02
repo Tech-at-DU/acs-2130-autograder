@@ -10,11 +10,12 @@ class TestFiles(unittest.TestCase):
         required_files = check_submitted_files([
             'app.py',
             'dictogram.py',
-            'hashtable.py',
-            'linkedlist.py',
+            # 'hashtable.py',
+            # 'linkedlist.py',
             'listogram.py',
             'requirements.txt',
-            'runtime.txt'
+            'runtime.txt',
+            'Procfile'
         ])
         for path in required_files:
             print('Missing {0}'.format(path))
