@@ -1,19 +1,20 @@
-#!python
-
-from listogram import Listogram
 import unittest
+from gradescope_utils.autograder_utils.decorators import weight, number, visibility, tags, partial_credit
+from listogram import Listogram
+
 # Python 2 and 3 compatibility: unittest module renamed this assertion method
 if not hasattr(unittest.TestCase, 'assertCountEqual'):
     unittest.TestCase.assertCountEqual = unittest.TestCase.assertItemsEqual
 
 
 class ListogramTest(unittest.TestCase):
-
+    """Worth 15 points in Gradescope."""
     # Test fixtures: known inputs and their expected results
     fish_words = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
     fish_list = [('one', 1), ('fish', 4), ('two', 1), ('red', 1), ('blue', 1)]
     fish_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
 
+    @weight(4)
     def test_entries(self):
         # NOTE: This test assumes Listogram is implemented as a list of tuples,
         # but if you implement it as a list of lists (or a list of count-lists)
@@ -27,6 +28,7 @@ class ListogramTest(unittest.TestCase):
         assert len(dictogram) == 5
         self.assertCountEqual(dictogram, self.fish_dict)  # Ignore item order
 
+    @weight(1)
     def test_contains(self):
         histogram = Listogram(self.fish_words)
         # All of these words should be found
@@ -36,6 +38,7 @@ class ListogramTest(unittest.TestCase):
         for word in ('fishy', 'food'):
             assert word not in histogram
 
+    @weight(2)
     def test_frequency(self):
         histogram = Listogram(self.fish_words)
         # Verify frequency count of all words
@@ -47,6 +50,7 @@ class ListogramTest(unittest.TestCase):
         # Verify frequency count of unseen words
         assert histogram.frequency('food') == 0
 
+    @weight(2)
     def test_add_count(self):
         histogram = Listogram(self.fish_words)
         # Add more words to update frequency counts
@@ -66,6 +70,7 @@ class ListogramTest(unittest.TestCase):
         # Verify total count of all word tokens
         assert histogram.tokens == 8 + 14
 
+    @weight(1)
     def test_tokens(self):
         histogram = Listogram(self.fish_words)
         # Verify total count of all word tokens
@@ -76,6 +81,7 @@ class ListogramTest(unittest.TestCase):
             histogram.add_count(word)
         assert histogram.tokens == 8 * 2
 
+    @weight(1)
     def test_types(self):
         histogram = Listogram(self.fish_words)
         # Verify count of distinct word types
@@ -86,6 +92,7 @@ class ListogramTest(unittest.TestCase):
             histogram.add_count(word)
         assert histogram.types == 5
 
+    @weight(5)
     def test_sample(self):
         histogram = Listogram(self.fish_words)
         # Create a list of 10,000 word samples from histogram

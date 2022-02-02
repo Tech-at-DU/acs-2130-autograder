@@ -1,19 +1,22 @@
-#!python
-
-from hashtable import HashTable
 import unittest
+from gradescope_utils.autograder_utils.decorators import weight, number, visibility, tags, partial_credit
+from hashtable import HashTable
+
 # Python 2 and 3 compatibility: unittest module renamed this assertion method
 if not hasattr(unittest.TestCase, 'assertCountEqual'):
     unittest.TestCase.assertCountEqual = unittest.TestCase.assertItemsEqual
 
 
 class HashTableTest(unittest.TestCase):
+    """Worth 20 points in Gradescope."""
 
+    @weight(2)
     def test_init(self):
         ht = HashTable(4)
         assert len(ht.buckets) == 4
         assert ht.length() == 0
 
+    @weight(2.5)
     def test_keys(self):
         ht = HashTable()
         assert ht.keys() == []
@@ -24,6 +27,7 @@ class HashTableTest(unittest.TestCase):
         ht.set('X', 10)
         self.assertCountEqual(ht.keys(), ['I', 'V', 'X'])  # Ignore item order
 
+    @weight(2.5)
     def test_values(self):
         ht = HashTable()
         assert ht.values() == []
@@ -34,6 +38,7 @@ class HashTableTest(unittest.TestCase):
         ht.set('X', 10)
         self.assertCountEqual(ht.values(), [1, 5, 10])  # Ignore item order
 
+    @weight(2)
     def test_items(self):
         ht = HashTable()
         assert ht.items() == []
@@ -44,6 +49,7 @@ class HashTableTest(unittest.TestCase):
         ht.set('X', 10)
         self.assertCountEqual(ht.items(), [('I', 1), ('V', 5), ('X', 10)])
 
+    @weight(1.5)
     def test_length(self):
         ht = HashTable()
         assert ht.length() == 0
@@ -54,6 +60,7 @@ class HashTableTest(unittest.TestCase):
         ht.set('X', 10)
         assert ht.length() == 3
 
+    @weight(1.5)
     def test_contains(self):
         ht = HashTable()
         ht.set('I', 1)
@@ -64,6 +71,7 @@ class HashTableTest(unittest.TestCase):
         assert ht.contains('X') is True
         assert ht.contains('A') is False
 
+    @weight(2.5)
     def test_set_and_get(self):
         ht = HashTable()
         ht.set('I', 1)
@@ -76,6 +84,7 @@ class HashTableTest(unittest.TestCase):
         with self.assertRaises(KeyError):
             ht.get('A')  # Key does not exist
 
+    @weight(2.5)
     def test_set_twice_and_get(self):
         ht = HashTable()
         ht.set('I', 1)
@@ -89,6 +98,7 @@ class HashTableTest(unittest.TestCase):
         assert ht.get('X') == 10
         assert ht.length() == 3  # Check length is not overcounting
 
+    @weight(3)
     def test_delete(self):
         ht = HashTable()
         ht.set('I', 1)

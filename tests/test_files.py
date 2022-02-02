@@ -4,7 +4,7 @@ from gradescope_utils.autograder_utils.files import check_submitted_files
 
 
 class TestFiles(unittest.TestCase):
-    @weight(0)
+    @weight(10)
     def test_submitted_files(self):
         """Check submitted files"""
         required_files = check_submitted_files([
