@@ -10,7 +10,7 @@ if not hasattr(unittest.TestCase, 'assertCountEqual'):
 class HashTableTest(unittest.TestCase):
     """Worth 20 points in Gradescope."""
 
-    @weight(2)
+    @weight(2.0)
     def test_init(self):
         ht = HashTable(4)
         assert len(ht.buckets) == 4
@@ -38,7 +38,7 @@ class HashTableTest(unittest.TestCase):
         ht.set('X', 10)
         self.assertCountEqual(ht.values(), [1, 5, 10])  # Ignore item order
 
-    @weight(2)
+    @weight(2.0)
     def test_items(self):
         ht = HashTable()
         assert ht.items() == []
@@ -98,7 +98,7 @@ class HashTableTest(unittest.TestCase):
         assert ht.get('X') == 10
         assert ht.length() == 3  # Check length is not overcounting
 
-    @weight(3)
+    @weight(3.0)
     def test_delete(self):
         ht = HashTable()
         ht.set('I', 1)

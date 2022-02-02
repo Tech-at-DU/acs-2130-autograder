@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 DIRECTORY="/autograder/submission"
 
 # Figure out which directory students put the code in:
@@ -12,4 +11,8 @@ cp -v -R "$DIRECTORY/." /autograder/source
 
 # Run tests and output results in JSON:
 echo "Running autograder..."
-python3 /autograder/source/run_tests.py && echo "Autograder results..." && cat /autograder/results/results.json
+python3 /autograder/source/run_tests.py
+
+# If you are debugging, the output will be found in
+# the $SUBMISSION_DIR/results directory defned in debug.sh:
+cp -r /autograder/results /autograder/submission/results

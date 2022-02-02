@@ -14,7 +14,7 @@ class DictogramTest(unittest.TestCase):
     fish_list = [('one', 1), ('fish', 4), ('two', 1), ('red', 1), ('blue', 1)]
     fish_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
 
-    @weight(4)
+    @weight(4.0)
     def test_entries(self):
         dictogram = Dictogram(self.fish_words)
         # Verify histogram as dictionary of entries like {word: count}
@@ -25,7 +25,7 @@ class DictogramTest(unittest.TestCase):
         assert len(listogram) == 5
         self.assertCountEqual(listogram, self.fish_list)  # Ignore item order
 
-    @weight(1)
+    @weight(1.0)
     def test_contains(self):
         histogram = Dictogram(self.fish_words)
         # All of these words should be found
@@ -35,7 +35,7 @@ class DictogramTest(unittest.TestCase):
         for word in ('fishy', 'food'):
             assert word not in histogram
 
-    @weight(1)
+    @weight(1.0)
     def test_frequency(self):
         histogram = Dictogram(self.fish_words)
         # Verify frequency count of all words
@@ -47,7 +47,7 @@ class DictogramTest(unittest.TestCase):
         # Verify frequency count of unseen words
         assert histogram.frequency('food') == 0
 
-    @weight(2)
+    @weight(2.0)
     def test_add_count(self):
         histogram = Dictogram(self.fish_words)
         # Add more words to update frequency counts
@@ -67,7 +67,7 @@ class DictogramTest(unittest.TestCase):
         # Verify total count of all word tokens
         assert histogram.tokens == 8 + 14
 
-    @weight(1)
+    @weight(1.0)
     def test_tokens(self):
         histogram = Dictogram(self.fish_words)
         # Verify total count of all word tokens
@@ -78,7 +78,7 @@ class DictogramTest(unittest.TestCase):
             histogram.add_count(word)
         assert histogram.tokens == 8 * 2
 
-    @weight(1)
+    @weight(1.0)
     def test_types(self):
         histogram = Dictogram(self.fish_words)
         # Verify count of distinct word types
@@ -89,7 +89,7 @@ class DictogramTest(unittest.TestCase):
             histogram.add_count(word)
         assert histogram.types == 5
 
-    @weight(5)
+    @weight(5.0)
     def test_sample(self):
         histogram = Dictogram(self.fish_words)
         # Create a list of 10,000 word samples from histogram

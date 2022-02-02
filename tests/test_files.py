@@ -4,20 +4,43 @@ from gradescope_utils.autograder_utils.files import check_submitted_files
 
 
 class TestFiles(unittest.TestCase):
-    @weight(10)
+    """Worth 10 points in Gradescope."""
+
+    @weight(10.0)
     def test_submitted_files(self):
-        """Check submitted files"""
+        """Make sure we have everything we need to run the Tweet Generator project."""
+
         required_files = check_submitted_files([
+            'data/corpus.txt',
+            'data/sample.txt',
             'app.py',
             'dictogram.py',
-            # 'hashtable.py',
-            # 'linkedlist.py',
+            'hashtable.py',
+            'linkedlist.py',
             'listogram.py',
             'requirements.txt',
             'runtime.txt',
             'Procfile'
         ])
-        for path in required_files:
-            print('Missing {0}'.format(path))
-        self.assertEqual(len(required_files), 0, 'Missing some required files!')
-        print('All required files submitted!')
+
+        # output = """
+        # Your solution must contain the following files.
+        # Here's an example of the repository structure we set up in class.
+
+        # 📂 ACS-1120-Intro-Data-Structures   <- SUBMIT THIS FOLDER!
+        #     ├── 📂 Code                     <- DO NOT SUBMIT!
+        #         ├── 📂 data
+        #             └── sample.txt          <- A few paragraphs of your corpus.
+        #         ├── app.py
+        #         ├── dictogram.py
+        #         ├── hashtable.py
+        #         ├── linkedlist.py
+        #         ├── listogram.py
+        #         ├── requirements.txt
+        #         ├── runtime.txt
+        #         └── Procfile
+        # """
+
+        error = f'[ERROR]: {0}'.format(', '.join(required_files))
+        self.assertEqual(len(required_files), 0,
+                         f'Missing some required files: {error}')
