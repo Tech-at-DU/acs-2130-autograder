@@ -1,8 +1,6 @@
 venv
-debug.sh
 .git
-
-/Users/droxey/dev/repos/ACS/tutorials/tweet-generator-runthru/tutorial
-/Users/droxey/dev/repos/ACS/tutorials/tweet-generator-runthru/.vscode
-/Users/droxey/dev/repos/ACS/tutorials/tweet-generator-runthru/venv
-/Users/droxey/dev/repos/ACS/tutorials/tweet-generator-runthru/.git
+make_autograder.sh
+make_dockerhub_release.sh
+*.zip
+*.md

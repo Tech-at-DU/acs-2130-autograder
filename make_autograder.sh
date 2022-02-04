@@ -1,3 +1,14 @@
+# ---------------------------------------------------------------------------- #
+# make_autograder.sh
+# Creates a zip file containing everything you need to upload on Gradescope.
+# ---------------------------------------------------------------------------- #
 #!/usr/bin/env bash
 
-zip -r autograder.zip Dockerfile .dockerignore deploy_key setup.sh run_autograder run_tests.py requirements_autograder.txt ssh_config tests/*.py
+# Back up and timestamp the build:
+cp autograder.zip autograder-$(date +%F_%H-%M-%S).zip
+
+# Zip up everything required to submit the autograder on Gradescope:
+cd source
+cp ../.dockerignore . && cp ../Dockerfile .
+zip -r -D ../autograder.zip .
+rm .dockerignore && rm Dockerfile

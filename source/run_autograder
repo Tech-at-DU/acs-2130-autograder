@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------------- #
+# run_autograder.sh
+# Executed each time a student submits Tweet Generator on Gradescope.
+# ---------------------------------------------------------------------------- #
+#!/usr/bin/env bash
+
+# Clone the tests repository for the latest changes:
+git clone --quiet https://github.com/Tech-at-DU/tweet-generator-tests.git /autograder/source/tests > /dev/null
+
+# Install the submission's dependencies:
+pip3 install -q -r /autograder/source/requirements_autograder.txt
+
+# Figure out which directory students put the code in:
+DIRECTORY="/autograder/submission"
+[ -d "/autograder/submission/Code" ] && DIRECTORY="$DIRECTORY/Code"
+[ -d "/autograder/submission/source" ] && DIRECTORY="$DIRECTORY/source"
+
+# Copy submission code to source directory:
+cp -R "$DIRECTORY/." /autograder/source
+
+STUDENT_REQUIREMENTS="$DIRECTORY/requirements.txt"
+[ -f $STUDENT_REQUIREMENTS ] && { pip3 install -q -r "$STUDENT_REQUIREMENTS"; }
+
+# Run tests and output results in JSON:
+python3 /autograder/source/run_tests.py
