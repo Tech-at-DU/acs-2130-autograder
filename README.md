@@ -1,4 +1,4 @@
-# Autograder for ACS 2130: Core Data Structures & Algorithms
+# Autograder for ACS 2130: Core Data Structures
 
 Uses [Gradescope](https://gradescope.com)'s autograding platform to automatically assess student progress on **[ACS 2130](https://bit.ly/acs2130)** modules and challenges.
 
