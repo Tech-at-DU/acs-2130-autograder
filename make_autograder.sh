@@ -5,7 +5,7 @@
 #!/usr/bin/env bash
 
 # Back up and timestamp the build:
-cp autograder.zip autograder-$(date +%F_%H-%M-%S).zip
+cp autograder.zip autograder_acs2130-$(date +%F_%H-%M-%S).zip
 
 # Zip up everything required to submit the autograder on Gradescope:
 cd source

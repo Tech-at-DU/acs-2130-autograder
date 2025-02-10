@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------------- #
 # run_autograder.sh
-# Executed each time a student submits Tweet Generator on Gradescope.
+# Executed each time a student submits a solution for ACS 2130 on Gradescope.
 # ---------------------------------------------------------------------------- #
 #!/usr/bin/env bash
 
 # Clone the tests repository for the latest changes:
-git clone --quiet https://github.com/Tech-at-DU/tweet-generator-tests.git /autograder/source/tests > /dev/null
+# git clone --quiet https://github.com/Tech-at-DU/repo-name-tests.git /autograder/source/tests > /dev/null
 
 # Install the submission's dependencies:
 pip3 install -q -r /autograder/source/requirements_autograder.txt

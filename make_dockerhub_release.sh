@@ -4,7 +4,5 @@
 # ---------------------------------------------------------------------------- #
 #!/usr/bin/env bash
 
-docker build . -t droxey/autograder-tweet-generator
-docker push droxey/autograder-tweet-generator:latest
-
-
+docker build . -t droxey/autograder-acs-2130
+docker push droxey/autograder-acs-2130:latest

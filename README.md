@@ -1,8 +1,10 @@
-# Autograder: Tweet Generator
+# Autograder for ACS 2130: Core Data Structures & Algorithms
 
-Uses [Gradescope](https://gradescope.com)'s autograding platform to automatically assess student progress on the [Tweet Generator](https://bit.ly/tutorial-tweet-generator) tutorial.
+Uses [Gradescope](https://gradescope.com)'s autograding platform to automatically assess student progress on **[ACS 2130](https://bit.ly/acs2130)** modules and challenges.
 
-Tests are found at [@Tech-at-DU/tweet-generator-tests](https://github.com/Tech-at-DU/tweet-generator-tests).
+**Each challenge will be announced in class during a session of [ACS 2130](https://bit.ly/acs2130).**
+
+Starter code can be found in the `source` directory. Tests are found in  `source/tests`.
 
 ## Autograding Resources
 
